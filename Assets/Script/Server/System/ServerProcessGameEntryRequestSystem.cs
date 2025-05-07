@@ -45,8 +45,14 @@ public partial struct ServerProcessGameEntryRequestSystem : ISystem
 
             // ゴースト（クライアントに表示される方オブジェクト）の所有者を生成をリクエストしたクライアントに指定
             ecb.SetComponent(newPlayer, new GhostOwner { NetworkId = clientId });
-            ecb.SetComponent(newPlayer, new PlayerStatus { HP = 100 });
-
+            /* PlayerAuthoring.csの方で事前にComponent追加しているから必要ないかも？
+            ecb.SetComponent(newPlayer, new PlayerStatus
+            {
+                BurningValue = 0,
+                SuckingValue = 0,
+                MoveSpeed = 5,
+            });
+            */
             ecb.AppendToBuffer(requestSource.SourceConnection, new LinkedEntityGroup { Value = newPlayer });
         }
         ecb.Playback(state.EntityManager);

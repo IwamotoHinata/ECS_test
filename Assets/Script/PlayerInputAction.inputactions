@@ -163,8 +163,19 @@
                 {
                     "name": "",
                     "id": "05d0473b-d6fe-4869-b1e9-0b3e9ac56ee1",
-                    "path": "<XRController>{RightHand}/primary2DAxis",
+                    "path": "<XRController>{RightHand}/{Primary2DAxis}",
                     "interactions": "Sector(directions=12,sweepBehavior=3)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5602085c-46b7-47f2-a3dc-44c7687543b4",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Turn",
@@ -191,7 +202,7 @@
                 {
                     "name": "",
                     "id": "1328f8c7-2aa8-4541-b392-07df51d61684",
-                    "path": "<XRController>{LeftHand}/primary2DAxis",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxis}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -286,6 +297,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "0867df77-e95e-4313-94c1-ab0fbdd6fc48",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -319,6 +339,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "UIPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf394b0b-4e67-4d4f-83b2-f65ca202b6ff",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e3c45e27-29f3-48ec-bf55-0823365e178f",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
