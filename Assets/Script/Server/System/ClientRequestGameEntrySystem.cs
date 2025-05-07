@@ -20,8 +20,9 @@ public partial struct ClientRequestGameEntrySystem : ISystem
 
     public void OnUpdate(ref SystemState state)
     {
-        // リクエストされたスポーン場所を取得
+        // リクエストされたスポーン場所を取得(GetSingletonは指定したIComponentDataを1つだけ取得する）
         var requestedSpawnPosition = SystemAPI.GetSingleton<ClientConnectRequest>().SpawnPosition;
+        var requestedAvatorURL = SystemAPI.GetSingleton<ClientConnectRequest>().AvatorURL;
         var requestedDeviceMode = SystemAPI.GetSingleton<ClientConnectRequest>().DeviceMode;
         // エンティティを操作（コンポーネントの追加・削除・編集など）するためのバッファー
         var ecb = new EntityCommandBuffer(Allocator.Temp);
@@ -36,7 +37,7 @@ public partial struct ClientRequestGameEntrySystem : ISystem
             // サーバーへのリクエスト用エンティティを作成
             var requestConnectEntity = ecb.CreateEntity();
             // RPCコマンドに取得したスポーン場所を込めてサーバーへ送信
-            ecb.AddComponent(requestConnectEntity, new ConnectRequest { DeviceMode = requestedDeviceMode,SpawnPositioin = requestedSpawnPosition });
+            ecb.AddComponent(requestConnectEntity, new ConnectRequest { DeviceMode = requestedDeviceMode,AvatorURL = requestedAvatorURL, SpawnPositioin = requestedSpawnPosition });
             ecb.AddComponent(requestConnectEntity, new SendRpcCommandRequest { TargetConnection = pendingNetworkId });
         }
         ecb.Playback(state.EntityManager);
