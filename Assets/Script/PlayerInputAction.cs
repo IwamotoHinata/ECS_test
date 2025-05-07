@@ -172,7 +172,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             ""id"": ""f277fd22-fa64-4c6e-be24-672c4057ae2c"",
             ""actions"": [
                 {
-                    ""name"": ""Turn"",
+                    ""name"": ""Look"",
                     ""type"": ""Value"",
                     ""id"": ""bb1ef571-3c00-472c-b907-8f2e97273699"",
                     ""expectedControlType"": ""Vector2"",
@@ -189,7 +189,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""interactions"": ""Sector(directions=12,sweepBehavior=3)"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Turn"",
+                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -200,7 +200,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Turn"",
+                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -484,7 +484,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_LeftHand_rotation = m_LeftHand.FindAction("rotation", throwIfNotFound: true);
         // RightHandLocomotion
         m_RightHandLocomotion = asset.FindActionMap("RightHandLocomotion", throwIfNotFound: true);
-        m_RightHandLocomotion_Turn = m_RightHandLocomotion.FindAction("Turn", throwIfNotFound: true);
+        m_RightHandLocomotion_Look = m_RightHandLocomotion.FindAction("Look", throwIfNotFound: true);
         // LeftHandLocomotion
         m_LeftHandLocomotion = asset.FindActionMap("LeftHandLocomotion", throwIfNotFound: true);
         m_LeftHandLocomotion_Move = m_LeftHandLocomotion.FindAction("Move", throwIfNotFound: true);
@@ -733,12 +733,12 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     // RightHandLocomotion
     private readonly InputActionMap m_RightHandLocomotion;
     private List<IRightHandLocomotionActions> m_RightHandLocomotionActionsCallbackInterfaces = new List<IRightHandLocomotionActions>();
-    private readonly InputAction m_RightHandLocomotion_Turn;
+    private readonly InputAction m_RightHandLocomotion_Look;
     public struct RightHandLocomotionActions
     {
         private @PlayerInputAction m_Wrapper;
         public RightHandLocomotionActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Turn => m_Wrapper.m_RightHandLocomotion_Turn;
+        public InputAction @Look => m_Wrapper.m_RightHandLocomotion_Look;
         public InputActionMap Get() { return m_Wrapper.m_RightHandLocomotion; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -748,16 +748,16 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_RightHandLocomotionActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_RightHandLocomotionActionsCallbackInterfaces.Add(instance);
-            @Turn.started += instance.OnTurn;
-            @Turn.performed += instance.OnTurn;
-            @Turn.canceled += instance.OnTurn;
+            @Look.started += instance.OnLook;
+            @Look.performed += instance.OnLook;
+            @Look.canceled += instance.OnLook;
         }
 
         private void UnregisterCallbacks(IRightHandLocomotionActions instance)
         {
-            @Turn.started -= instance.OnTurn;
-            @Turn.performed -= instance.OnTurn;
-            @Turn.canceled -= instance.OnTurn;
+            @Look.started -= instance.OnLook;
+            @Look.performed -= instance.OnLook;
+            @Look.canceled -= instance.OnLook;
         }
 
         public void RemoveCallbacks(IRightHandLocomotionActions instance)
@@ -970,7 +970,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     }
     public interface IRightHandLocomotionActions
     {
-        void OnTurn(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
     public interface ILeftHandLocomotionActions
     {

@@ -20,12 +20,16 @@ public struct PlayerInput : IInputComponentData
 {
     // Quantization = 0で正確なデータを同期する
     [GhostField(Quantization = 0)] public float2 MoveValue;//移動方向を格納
+    [GhostField(Quantization = 0)] public float2 LookValue;//回転方向を格納
     [GhostField(Quantization = 0)] public bool IsJump;//ジャンプ命令の格納
 }
 
 
 public class PlayerAuthoring : MonoBehaviour
 {
+    [SerializeField] private float _moveSpeed = 5;//移動速度（初期値5）
+    [SerializeField] private float _lookSpeed = 5;//回転速度（初期値5）
+
     public class PlayerAuthoringBaker : Baker<PlayerAuthoring>
     {
         public override void Bake(PlayerAuthoring authoring)
@@ -38,7 +42,8 @@ public class PlayerAuthoring : MonoBehaviour
             {
                 BurningValue = 0,
                 SuckingValue = 0,
-                MoveSpeed = 5,
+                MoveSpeed = authoring._moveSpeed,
+                LookSpeed = authoring._lookSpeed,
             });
         }
     }

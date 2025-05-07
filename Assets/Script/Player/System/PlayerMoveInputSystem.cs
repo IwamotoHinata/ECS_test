@@ -35,6 +35,7 @@ public partial class PlayerMoveInputSystem : SystemBase
         EntityManager.SetComponentData(_ownerPlayerEntity, new PlayerInput
         {
             MoveValue = _inputActions.LeftHandLocomotion.Move.ReadValue<Vector2>(),
+            LookValue = _inputActions.RightHandLocomotion.Look.ReadValue<Vector2>(),
             IsJump = _inputActions.RightHandInterction.Jump.ReadValue<bool>()
         }) ;
     }

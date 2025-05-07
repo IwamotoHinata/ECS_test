@@ -10,4 +10,5 @@ public struct PlayerStatus : IComponentData
     [GhostField] public float BurningValue;//Ä‚¯‚½Š„‡
     [GhostField] public float SuckingValue;//ˆê_‰»’Y‘f‚ğ‹z‚Á‚½—Ê
     [GhostField] public float MoveSpeed;
+    [GhostField] public float LookSpeed;
 }
