@@ -1,0 +1,408 @@
+{
+    "name": "PlayerInputAction",
+    "maps": [
+        {
+            "name": "Head",
+            "id": "14f9b13d-4b72-4676-855a-9c96f6aa925b",
+            "actions": [
+                {
+                    "name": "Postion",
+                    "type": "Value",
+                    "id": "93da7191-f26a-42f5-851f-4f9e4bc7d33b",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Rotation",
+                    "type": "Value",
+                    "id": "a5267c5f-b651-4bbd-8e73-c9572d3aa2ca",
+                    "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "333838cb-e75c-4a31-86ba-f03412b93f80",
+                    "path": "<XRHMD>/centerEyePosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Postion",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb8efeae-b5f2-4e71-89b5-5b24d9324542",
+                    "path": "<XRHMD>/centerEyeRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "RightHand",
+            "id": "85eaf909-a68d-4641-8d23-bf28cb385427",
+            "actions": [
+                {
+                    "name": "Postion",
+                    "type": "Value",
+                    "id": "57dff01a-1828-4d36-91ea-42561f822948",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "rotation",
+                    "type": "Value",
+                    "id": "602f961a-8990-4a19-86a4-ddbb54c9ad4a",
+                    "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "36a5c2f8-70a4-4c0b-a78c-b3569ec11e36",
+                    "path": "<XRController>{RightHand}/pointerPosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Postion",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b55bb95a-e1ad-4bad-a4f8-6eed5d1af446",
+                    "path": "<XRController>{RightHand}/pointerRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "LeftHand",
+            "id": "f158f7f2-a4e7-417e-94ec-3faf1fbaa62b",
+            "actions": [
+                {
+                    "name": "Postion",
+                    "type": "Value",
+                    "id": "a87862e4-cf55-419c-aab9-dc0d1d331108",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "rotation",
+                    "type": "Value",
+                    "id": "1ed6dd5b-ae09-4b76-85cc-78bcffe1b1f0",
+                    "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f1de99dd-a8a6-42f4-9dfe-eea7aa27922c",
+                    "path": "<XRController>{LeftHand}/pointerPosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Postion",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad7e9369-abb4-4520-be98-b9c9bc9ba02f",
+                    "path": "<XRController>{LeftHand}/pointerRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "RightHandLocomotion",
+            "id": "f277fd22-fa64-4c6e-be24-672c4057ae2c",
+            "actions": [
+                {
+                    "name": "Turn",
+                    "type": "Value",
+                    "id": "bb1ef571-3c00-472c-b907-8f2e97273699",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "05d0473b-d6fe-4869-b1e9-0b3e9ac56ee1",
+                    "path": "<XRController>{RightHand}/primary2DAxis",
+                    "interactions": "Sector(directions=12,sweepBehavior=3)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "LeftHandLocomotion",
+            "id": "0259e949-8859-45b6-a4e7-2446ddcc801e",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "e417b954-0a1e-4f6c-9e0e-3a6cf2b56b6d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1328f8c7-2aa8-4541-b392-07df51d61684",
+                    "path": "<XRController>{LeftHand}/primary2DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "KeyBoard",
+                    "id": "196ad1b4-2dcc-4c3b-a2ae-e82396c8cbfd",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "1867322c-fe22-4a09-8669-7f16cfda4538",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "cc1d7878-26b3-4101-83b9-7477fedec5a4",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "e14d2777-9a91-4ac4-af0f-0e79a9ed78d1",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "6ed36bf2-df92-4132-a0a3-c48bc4027114",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "RightHandInterction",
+            "id": "ee65077b-d18b-492f-ab40-4a6dd1e89862",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "a14ce5ce-4f61-4691-bb92-f7a1a7059886",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Activate",
+                    "type": "Button",
+                    "id": "5b204e7b-e5aa-4db1-90f2-7f14fa1e9474",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UIPress",
+                    "type": "Button",
+                    "id": "28e56423-9514-45bb-8eaf-2fa3a5825200",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "75e962da-b51e-475e-b286-a8d7603377a1",
+                    "path": "<OculusTouchController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7987c990-59e8-48d7-97a3-b9c29239c387",
+                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f5c8291c-7484-4907-9067-ac095f6df2ca",
+                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UIPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "LeftHandInterction",
+            "id": "6d0bad4d-13a9-489b-bbd3-76cb861886a8",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "efde88f0-acf9-4372-b581-1336acd3ece0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Activate",
+                    "type": "Button",
+                    "id": "033df1a9-7bdd-491c-8021-a270e59435b3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UIPress",
+                    "type": "Button",
+                    "id": "0213e504-7a2b-4bd2-bf64-9ba24681ad40",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dd0b5866-448a-4549-9311-f67575f48546",
+                    "path": "<OculusTouchController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a052cc22-a16e-4e3b-a681-699c8334206a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1992e774-4281-4e87-ad93-db350fb6f846",
+                    "path": "<OculusTouchController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f71b569-138c-4d70-9eea-654a7ea633b7",
+                    "path": "<OculusTouchController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UIPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

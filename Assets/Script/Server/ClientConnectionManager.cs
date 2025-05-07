@@ -53,7 +53,7 @@ public class ClientConnectionManager : MonoBehaviour
     [SerializeField] private TMP_InputField _portField;
     [SerializeField] private Button _connectButton;
 
-    //[SerializeField] private TMP_InputField _avatorURL;
+    [SerializeField] private TMP_InputField _avatorURL;
     [SerializeField] private TMP_Dropdown _useDeviceDropdown;
 
     #endregion
@@ -156,8 +156,9 @@ public class ClientConnectionManager : MonoBehaviour
             clientWorld.EntityManager.AddComponentData(connectRequestEntity, new ClientConnectRequest
             {
                 DeviceMode = _useDeviceDropdown.value,
+                AvatorURL = _avatorURL.text,
                 SpawnPosition = new float3(10, 0, 0)
-            });
+            }) ;
         }
         else
         {
@@ -165,6 +166,7 @@ public class ClientConnectionManager : MonoBehaviour
             clientWorld.EntityManager.AddComponentData(connectRequestEntity, new ClientConnectRequest
             {
                 DeviceMode = _useDeviceDropdown.value,
+                AvatorURL = _avatorURL.text,
                 SpawnPosition = new float3(5, 0, 0)
             });
         }
