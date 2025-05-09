@@ -2,9 +2,9 @@ using UnityEngine;
 using Unity.Entities;
 using Unity.NetCode;
 
-// サーバー・クライアント両方で実行される
-//Todo: サーバーのみに実行させる
-[UpdateInGroup(typeof(PredictedSimulationSystemGroup))]
+//サーバーのみに実行させる
+[WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
+[UpdateInGroup(typeof(SimulationSystemGroup))]
 public partial class EarthquakeSystem : SystemBase
 {
     protected override void OnCreate()
