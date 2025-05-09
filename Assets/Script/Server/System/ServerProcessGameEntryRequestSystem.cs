@@ -3,6 +3,7 @@ using Unity.Entities;
 using Unity.NetCode;
 using Unity.Transforms;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 // サーバーでのみ実行
 [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]

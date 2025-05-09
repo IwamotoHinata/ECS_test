@@ -1,3 +1,4 @@
+using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
@@ -58,6 +59,7 @@ public partial class CameraMoveSystem : SystemBase
         // 操作しているプレイヤーのエンティティをキャッシュ
         _ownerPlayerEntity = SystemAPI.GetSingletonEntity<OwnerPlayerTag>();
 
+
         //操作しているプレイヤーの視点（CameraOffset）をキャッシュ
         //_ownerCameraOffsetEntity = _ownerPlayerEntity.
 
@@ -84,13 +86,11 @@ public partial class CameraMoveSystem : SystemBase
         _mainCamera.transform.position = playerLocalPosition + MAIN_CAMERA_OFFSET;
 
         //カメラの回転を計算
-        //float x = ownerPlayerLookValue.y * ownerPlayerLookSpeed * SystemAPI.Time.DeltaTime;
-        //float y = ownerPlayerLookValue.x * ownerPlayerLookSpeed * SystemAPI.Time.DeltaTime;
 
-        _mainCamera.transform.Rotate(-ownerPlayerLookValue.y * ownerPlayerLookSpeed * SystemAPI.Time.DeltaTime, ownerPlayerLookValue.x * ownerPlayerLookSpeed * SystemAPI.Time.DeltaTime, 0);
+        float x = ownerPlayerLookValue.y * ownerPlayerLookSpeed * SystemAPI.Time.DeltaTime;
+        float y = ownerPlayerLookValue.x * ownerPlayerLookSpeed * SystemAPI.Time.DeltaTime;
+
+        _mainCamera.transform.Rotate(-x, y, 0);
         _mainCamera.transform.eulerAngles = new Vector3(_mainCamera.transform.eulerAngles.x, _mainCamera.transform.eulerAngles.y, 0);//Rotate関数のみの場合,Z方向に少し回転するので補正
     }
-
-
-
 }
