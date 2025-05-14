@@ -36,7 +36,7 @@ public partial class PlayerMoveInputSystem : SystemBase
         {
             MoveValue = _inputActions.LeftHandLocomotion.Move.ReadValue<Vector2>(),
             LookValue = _inputActions.RightHandLocomotion.Look.ReadValue<Vector2>(),
-            IsJump = _inputActions.RightHandInterction.Jump.ReadValue<bool>()
+            IsJump = _inputActions.RightHandLocomotion.Jump.IsPressed()
         }) ;
     }
 }
