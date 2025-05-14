@@ -1,4 +1,7 @@
 using Unity.Entities;
+using Unity.Mathematics;
+using Unity.Physics;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class EarthquakeSystemAuthoring : MonoBehaviour
@@ -8,6 +11,13 @@ public class EarthquakeSystemAuthoring : MonoBehaviour
         public override void Bake(EarthquakeSystemAuthoring authoring)
         {
             var entity = GetEntity(TransformUsageFlags.None);
+            AddComponent<EarthquakeStateTag>(entity);
+            AddComponent(entity, new PhysicsStep
+            {
+                SimulationType = SimulationType.UnityPhysics,
+                Gravity = new float3(0, -9.81f, 0),
+                SolverIterationCount = 4,
+            });
             AddComponent(entity, new EarthquakeState
             {
                 Active = false,

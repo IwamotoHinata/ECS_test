@@ -16,7 +16,7 @@ public partial class EarthquakeInputSysytem : SystemBase
 
     protected override void OnStartRunning()
     {
-        _inputActions.Enable();
+        //_inputActions.Enable();
         _ownerPlayerEntity = SystemAPI.GetSingletonEntity<OwnerPlayerTag>();
     }
 
