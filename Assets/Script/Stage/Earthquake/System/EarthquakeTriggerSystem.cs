@@ -1,4 +1,6 @@
 using Unity.Entities;
+using Unity.Mathematics;
+using Unity.Transforms;
 using UnityEngine;
 
 [UpdateInGroup(typeof(SimulationSystemGroup))]
@@ -37,9 +39,16 @@ public partial class EarthquakeTriggerSystem : SystemBase
         }
     }
     */
-    
+    protected override void OnCreate()
+    {
+        RequireForUpdate<HostPlayerTag>();
+    }
+
+
+
     protected override void OnUpdate()
     {
+        /*
         foreach (var (input, entity) in SystemAPI.Query<EarthquakeInput>().WithEntityAccess())
         {
             if (input.EarthquakeTrigger)
@@ -59,6 +68,7 @@ public partial class EarthquakeTriggerSystem : SystemBase
                 }
             }
         }
+        */
     }
 
 }

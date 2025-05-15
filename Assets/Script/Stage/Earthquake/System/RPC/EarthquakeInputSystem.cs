@@ -8,6 +8,7 @@ public partial class EarthquakeInputSystem : SystemBase
 
     protected override void OnCreate()
     {
+        RequireForUpdate<HostPlayerTag>();
         _inputActions = new PlayerInputAction();
     }
 

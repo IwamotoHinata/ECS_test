@@ -6,7 +6,7 @@ public partial class EarthquakeInputSysytem : SystemBase
 {
     private PlayerInputAction _inputActions;
     private Entity _ownerPlayerEntity;
-
+    /*
     protected override void OnCreate()
     {
         RequireForUpdate<HostPlayerTag>();
@@ -26,4 +26,7 @@ public partial class EarthquakeInputSysytem : SystemBase
         input.EarthquakeTrigger = _inputActions.RightHandLocomotion.EarthquakeTrigger.IsPressed();
         EntityManager.SetComponentData(_ownerPlayerEntity, input);
     }
+    */
+    protected override void OnUpdate()
+    { }
 }

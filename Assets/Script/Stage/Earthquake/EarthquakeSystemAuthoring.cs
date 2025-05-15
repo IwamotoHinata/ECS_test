@@ -1,7 +1,6 @@
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class EarthquakeSystemAuthoring : MonoBehaviour
