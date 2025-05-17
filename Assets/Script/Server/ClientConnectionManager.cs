@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -64,7 +65,16 @@ public class ClientConnectionManager : MonoBehaviour
     /// <remarks>入力されたポート番号をushortに変換して返却</remarks>
     private ushort Port => ushort.Parse(_portField.text);
 
+    public static ClientConnectionManager Instance;
+    private bool _isHost = false;
+    public bool IsHost { get { return _isHost; } }
+
     #region 自動呼び出しされるメソッド
+
+    private void Start()
+    {
+        Instance = this;
+    }
 
     private void OnEnable()
     {
@@ -131,6 +141,8 @@ public class ClientConnectionManager : MonoBehaviour
             using var networkDriverQuery = serverWorld.EntityManager.CreateEntityQuery(ComponentType.ReadWrite<NetworkStreamDriver>());
             networkDriverQuery.GetSingletonRW<NetworkStreamDriver>().ValueRW.Listen(serverEndpoint);
         }
+
+        _isHost = true;
     }
 
     private void StartClient()
@@ -147,30 +159,16 @@ public class ClientConnectionManager : MonoBehaviour
 
         // サーバー接続リクエスト用エンティティを作成
         var connectRequestEntity = clientWorld.EntityManager.CreateEntity();
+        var random = new Unity.Mathematics.Random((uint)(464682));//引数の数字は適当
 
-        int random = UnityEngine.Random.Range(0, 2);
-
-        if (random == 0)
+        // わかりやすいように少しずれた場所(10, 0, 0)をスポーン地点に指定
+        clientWorld.EntityManager.AddComponentData(connectRequestEntity, new ClientConnectRequest
         {
-            // わかりやすいように少しずれた場所(10, 0, 0)をスポーン地点に指定
-            clientWorld.EntityManager.AddComponentData(connectRequestEntity, new ClientConnectRequest
-            {
-                DeviceMode = _useDeviceDropdown.value,
-                AvatorURL = _avatorURL.text,
-                SpawnPosition = new float3(10, 0, 0)
-            }) ;
-        }
-        else
-        {
-            // わかりやすいように少しずれた場所(5, 0, 0)をスポーン地点に指定
-            clientWorld.EntityManager.AddComponentData(connectRequestEntity, new ClientConnectRequest
-            {
-                DeviceMode = _useDeviceDropdown.value,
-                AvatorURL = _avatorURL.text,
-                SpawnPosition = new float3(5, 0, 0)
-            });
-        }
-
+            DeviceMode = _useDeviceDropdown.value,
+            AvatorURL = _avatorURL.text,
+            SpawnPosition = random.NextFloat3(new float3(-5, 0, -5), new float3(5, 0, 5))
+        }) ;
+        
         // Default Worldは破壊しているので、clientworldを入れておく
         World.DefaultGameObjectInjectionWorld = clientWorld;
     }

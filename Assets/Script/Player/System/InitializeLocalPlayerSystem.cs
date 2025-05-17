@@ -19,6 +19,9 @@ public partial struct InitializeLocalPlayerSystem : ISystem
         foreach (var (_, entity) in SystemAPI.Query<PlayerTag>().WithAll<GhostOwnerIsLocal>().WithNone<OwnerPlayerTag>().WithEntityAccess())
         {
             ecb.AddComponent<OwnerPlayerTag>(entity);
+            if(ClientConnectionManager.Instance.IsHost)
+                ecb.AddComponent<HostPlayerTag>(entity);
+
             ecb.SetComponent(entity, new PlayerInput { MoveValue = float2.zero });
         }
         ecb.Playback(state.EntityManager);

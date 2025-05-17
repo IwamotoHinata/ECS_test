@@ -13,6 +13,9 @@ public struct NewPlayerTag : IComponentData { }
 // 自分が操作するオブジェクトか判定する用のタグ
 public struct OwnerPlayerTag : IComponentData { }
 
+// セッションのホストか判定する用のタグ
+public struct HostPlayerTag : IComponentData { }
+
 // 入力関係のコンポーネントはAllPredicted
 // 入力同期用のIInputComponentDataを継承
 [GhostComponent(PrefabType = GhostPrefabType.AllPredicted)]
@@ -38,6 +41,7 @@ public class PlayerAuthoring : MonoBehaviour
             AddComponent<PlayerTag>(entity);
             AddComponent<NewPlayerTag>(entity);
             AddComponent<PlayerInput>(entity);
+            AddComponent<EarthquakeInput>(entity);//ホストが地震を発生させるために必要
             AddComponent(entity, new PlayerStatus
             {
                 BurningValue = 0,

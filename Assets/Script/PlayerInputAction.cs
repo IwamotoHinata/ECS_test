@@ -179,6 +179,24 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""EarthquakeTrigger"",
+                    ""type"": ""Button"",
+                    ""id"": ""79be1e26-7d39-4f13-b26b-cf5b4012fa9b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""2b938cf0-234f-441d-9583-e66016c7dfd6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -201,6 +219,50 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""72dd0b9b-ccdd-4dcf-846e-1bdc2743cd39"",
+                    ""path"": ""<Keyboard>/f1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EarthquakeTrigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1d008b9d-ec23-4bfb-aa9d-cf646c9452bc"",
+                    ""path"": ""<XRController>{RightHand}/{SecondaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EarthquakeTrigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""abb9c6cd-a24c-4199-b779-8e66616f4626"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70fb8281-edae-4f7d-90ca-54ee9c83af3a"",
+                    ""path"": ""<XRController>{RightHand}/{PrimaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -319,15 +381,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""0867df77-e95e-4313-94c1-ab0fbdd6fc48"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -361,28 +414,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""UIPress"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bf394b0b-4e67-4d4f-83b2-f65ca202b6ff"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e3c45e27-29f3-48ec-bf55-0823365e178f"",
-                    ""path"": ""<XRController>{RightHand}/{PrimaryButton}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -485,6 +516,8 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         // RightHandLocomotion
         m_RightHandLocomotion = asset.FindActionMap("RightHandLocomotion", throwIfNotFound: true);
         m_RightHandLocomotion_Look = m_RightHandLocomotion.FindAction("Look", throwIfNotFound: true);
+        m_RightHandLocomotion_EarthquakeTrigger = m_RightHandLocomotion.FindAction("EarthquakeTrigger", throwIfNotFound: true);
+        m_RightHandLocomotion_Jump = m_RightHandLocomotion.FindAction("Jump", throwIfNotFound: true);
         // LeftHandLocomotion
         m_LeftHandLocomotion = asset.FindActionMap("LeftHandLocomotion", throwIfNotFound: true);
         m_LeftHandLocomotion_Move = m_LeftHandLocomotion.FindAction("Move", throwIfNotFound: true);
@@ -493,7 +526,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_RightHandInterction_Select = m_RightHandInterction.FindAction("Select", throwIfNotFound: true);
         m_RightHandInterction_Activate = m_RightHandInterction.FindAction("Activate", throwIfNotFound: true);
         m_RightHandInterction_UIPress = m_RightHandInterction.FindAction("UIPress", throwIfNotFound: true);
-        m_RightHandInterction_Jump = m_RightHandInterction.FindAction("Jump", throwIfNotFound: true);
         // LeftHandInterction
         m_LeftHandInterction = asset.FindActionMap("LeftHandInterction", throwIfNotFound: true);
         m_LeftHandInterction_Select = m_LeftHandInterction.FindAction("Select", throwIfNotFound: true);
@@ -734,11 +766,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_RightHandLocomotion;
     private List<IRightHandLocomotionActions> m_RightHandLocomotionActionsCallbackInterfaces = new List<IRightHandLocomotionActions>();
     private readonly InputAction m_RightHandLocomotion_Look;
+    private readonly InputAction m_RightHandLocomotion_EarthquakeTrigger;
+    private readonly InputAction m_RightHandLocomotion_Jump;
     public struct RightHandLocomotionActions
     {
         private @PlayerInputAction m_Wrapper;
         public RightHandLocomotionActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Look => m_Wrapper.m_RightHandLocomotion_Look;
+        public InputAction @EarthquakeTrigger => m_Wrapper.m_RightHandLocomotion_EarthquakeTrigger;
+        public InputAction @Jump => m_Wrapper.m_RightHandLocomotion_Jump;
         public InputActionMap Get() { return m_Wrapper.m_RightHandLocomotion; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -751,6 +787,12 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
+            @EarthquakeTrigger.started += instance.OnEarthquakeTrigger;
+            @EarthquakeTrigger.performed += instance.OnEarthquakeTrigger;
+            @EarthquakeTrigger.canceled += instance.OnEarthquakeTrigger;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         private void UnregisterCallbacks(IRightHandLocomotionActions instance)
@@ -758,6 +800,12 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
+            @EarthquakeTrigger.started -= instance.OnEarthquakeTrigger;
+            @EarthquakeTrigger.performed -= instance.OnEarthquakeTrigger;
+            @EarthquakeTrigger.canceled -= instance.OnEarthquakeTrigger;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         public void RemoveCallbacks(IRightHandLocomotionActions instance)
@@ -828,7 +876,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_RightHandInterction_Select;
     private readonly InputAction m_RightHandInterction_Activate;
     private readonly InputAction m_RightHandInterction_UIPress;
-    private readonly InputAction m_RightHandInterction_Jump;
     public struct RightHandInterctionActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -836,7 +883,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         public InputAction @Select => m_Wrapper.m_RightHandInterction_Select;
         public InputAction @Activate => m_Wrapper.m_RightHandInterction_Activate;
         public InputAction @UIPress => m_Wrapper.m_RightHandInterction_UIPress;
-        public InputAction @Jump => m_Wrapper.m_RightHandInterction_Jump;
         public InputActionMap Get() { return m_Wrapper.m_RightHandInterction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -855,9 +901,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @UIPress.started += instance.OnUIPress;
             @UIPress.performed += instance.OnUIPress;
             @UIPress.canceled += instance.OnUIPress;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
         }
 
         private void UnregisterCallbacks(IRightHandInterctionActions instance)
@@ -871,9 +914,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @UIPress.started -= instance.OnUIPress;
             @UIPress.performed -= instance.OnUIPress;
             @UIPress.canceled -= instance.OnUIPress;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
         }
 
         public void RemoveCallbacks(IRightHandInterctionActions instance)
@@ -971,6 +1011,8 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     public interface IRightHandLocomotionActions
     {
         void OnLook(InputAction.CallbackContext context);
+        void OnEarthquakeTrigger(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
     public interface ILeftHandLocomotionActions
     {
@@ -981,7 +1023,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         void OnSelect(InputAction.CallbackContext context);
         void OnActivate(InputAction.CallbackContext context);
         void OnUIPress(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
     }
     public interface ILeftHandInterctionActions
     {
