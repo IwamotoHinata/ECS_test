@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using TMPro;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -130,8 +131,26 @@ public class ClientConnectionManager : MonoBehaviour
         }
     }
 
+    bool WorldExists(string worldName)
+    {   
+        foreach (var world in World.All)
+        {
+            if (world.Name == worldName)
+                return true;
+        }
+        return false;
+    }
+
     private void StartServer()
     {
+        //ServerのWorldが存在しない場合、Hostとみなす
+        if (WorldExists(SERVER_WORLD_NAME) == false)
+        {
+            _isHost = true;
+        }
+
+        //Debug.Log(WorldExists(SERVER_WORLD_NAME));
+
         // サーバーワールド作成
         var serverWorld = ClientServerBootstrap.CreateServerWorld(SERVER_WORLD_NAME);
 
@@ -142,7 +161,7 @@ public class ClientConnectionManager : MonoBehaviour
             networkDriverQuery.GetSingletonRW<NetworkStreamDriver>().ValueRW.Listen(serverEndpoint);
         }
 
-        _isHost = true;
+        //_isHost = true;
     }
 
     private void StartClient()
