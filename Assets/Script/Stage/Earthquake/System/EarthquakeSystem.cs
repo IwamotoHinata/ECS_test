@@ -12,42 +12,6 @@ using UnityEngine;
 //後でISystemにしろ。今は開発のためにSystemBaseに
 public partial class EarthquakeSystem : SystemBase
 {
-    /*ISystem用
-    public void OnUpdate(ref SystemState state)
-    {
-        Debug.Log("gseges");
-        var earthquakeState = SystemAPI.GetSingleton<EarthquakeState>();
-        Debug.Log("aaaaaa");
-        if (!earthquakeState.Active)
-            return;
-
-        Debug.Log("地震の処理実行中");
-
-        foreach (var (velocity, entity) in SystemAPI.Query<RefRW<PhysicsVelocity>>().WithAll<EarthquakeObjectTag>().WithEntityAccess())
-        {
-            velocity.ValueRW.Linear += new float3(UnityEngine.Random.Range(-1f, 1f), 0, UnityEngine.Random.Range(-1f, 1f));
-        }
-
-        earthquakeState.Timer -= SystemAPI.Time.DeltaTime;
-        if (earthquakeState.Timer <= 0f)
-        {
-            earthquakeState.Active = false;
-        }
-
-        SystemAPI.SetSingleton(earthquakeState);
-        
-    }
-*/
-
-    /// <summary>
-    /// 徳島大学のEntity
-    /// </summary>
-    private Entity _tu;
-    private PhysicsVelocity _physicsVelocity;
-    private PhysicsMass _physicsMass;
-
-    private bool _isDisaster = false;
-
     List<string[]> _accelerations = new List<string[]>();
     int _nowIndex = 0;
     float _readTime;
@@ -106,10 +70,6 @@ public partial class EarthquakeSystem : SystemBase
         else
             return;
 
-        Debug.Log("aaaaaa");
-        //if (!earthquakeState.Active)
-            //return;
-
         Debug.Log("地震の処理実行中");
 
         if (_changeAccelerationTime <= 0)
@@ -117,11 +77,11 @@ public partial class EarthquakeSystem : SystemBase
             foreach (var (velocity, entity) in SystemAPI.Query<RefRW<PhysicsVelocity>>().WithAll<EarthquakeObjectTag>().WithEntityAccess())
             {
                 velocity.ValueRW.Linear += new float3(float.Parse(_accelerations[_nowIndex][0]), 0, float.Parse(_accelerations[_nowIndex][1]));
-                Debug.Log(entity.Index);
+                //Debug.Log(entity.Index);
             }
             _nowIndex++;
             _changeAccelerationTime = _readTime;
-            Debug.Log(_nowIndex);
+            //Debug.Log(_nowIndex);
         }
         else
         {
