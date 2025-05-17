@@ -3,7 +3,6 @@ using System.IO;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
-using Unity.Physics.Systems;
 using UnityEngine;
 
 //OnUpdate関数が呼ばれない理由は8行目の属性のせい。解決法を調べろ
